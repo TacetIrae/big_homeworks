@@ -3,12 +3,17 @@ import export_info as exp_inf
 import print_list as pl
 import search_info as sea_inf
 
+
 def welcome():
     print("Welcome to the data-base")
+
+
 
 def splitter():
     sep = input("Enter desired separator")
     return sep
+
+
 
 def choice():
     print("1 - Input new data;\n\
@@ -32,6 +37,8 @@ def choice():
 
     else: print ("Incorrect input")
 
+
+
 def input_data():
     name = input("Enter a first name of a student")
     surname = input("Enter a surname of a student")
@@ -39,18 +46,25 @@ def input_data():
     grade = input("Enter at which grade of university student currently is")
     return [name, surname, age, grade]
 
+
 def input_list_name():
     names = input("Enter names\n\
     Enter a list of data separating each unit  with ','")
     return names
+
+
 def input_list_surname():
     surnames = input ("Enter Surnames\n\
     Enter a list of data separating each unit with ','")
     return surnames
+
+
 def input_list_birth ():
     birth = input("Enter birth date\n\
     Enter a list of data separating each unit with ','")
     return birth
+
+
 def input_list_grade():
     grade = input("Enter a grades of students\n\
         Enter a list of data separating each unit with ','")
