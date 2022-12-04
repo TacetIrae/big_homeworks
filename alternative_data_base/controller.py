@@ -47,24 +47,27 @@ class Person:
 
         if choice == 1:
             print("You selected search method using id")
-            user_id = int(input("Enter an id you want to seach for"))
-            cursor.execute("SELECT * FROM workdb.db WHERE id LIKE %s", ("%" + user_id + "%",))
+            user_id = int(input("Enter an id you want to search for"))
+            self.cursor.execute("SELECT * FROM persons WHERE id = '%s'" % (user_id))
+            raws = self.cursor.fetchone()
+            print(raws)
+
         elif choice == 2:
             print("You selected search method using first name")
-            name = input("Enter first name you want to seach for")
-            self.cursor.execute("SELECT * FROM workdb.db WHERE first_name LIKE %s", ("%" + name + "%",))
+            name = input("Enter first name you want to search for")
+            print(self.cursor.execute("SELECT * FROM persons WHERE name = '%s'" % (name)))
         elif choice == 3:
             print("You selected search method using last name")
-            last_n = input("Enter last name you want to seach for")
-            self.cursor.execute("SELECT * FROM workdb.db WHERE last_name LIKE %s", ("%" + last_n + "%",))
+            last_n = input("Enter last name you want to search for")
+            print(self.cursor.execute("SELECT * FROM persons WHERE last_name = '%s'" % (last_n)))
         elif choice == 4:
             print("You selected search method using age")
             age = int(input("Enter an age you want to search for"))
-            self.cursor.execute("SELECT * FROM workdb.db WHERE age LIKE %s", ("%" + age + "%",))
+            print(self.cursor.execute("SELECT * FROM persons WHERE age = '%s'" % (age)))
         elif choice == 5:
             print("You selected search method using phone number ")
             number = input("Enter a phone number you want to search for")
-            self.cursor.execute("SELECT * FROM workdb.db WHERE telephone_number LIKE %s", ("%" + number + "%",))
+            print(self.cursor.execute("SELECT * FROM persons WHERE telephone_number = '%s'" % (number)))
         else:
             print("Following option does not exist")
 
@@ -91,7 +94,7 @@ class Person:
                            "1. Print out whole data base\n"
                            "2. Input into database\n"
                            "3.Search for a desired information in database\n"
-                           "4 Print out out particular person"))
+                           "4. Find a person with id"))
         if choice == 1:
             connection = sqlite3.connect('workdb.db')
             cursor = connection.cursor()
@@ -106,8 +109,7 @@ class Person:
         elif choice == 3:
             Person.search_data(self)
         elif choice == 4:
-            number = int(input("Enter a desired id you want to find"))
-            Person.load_person(self, number)
+            Person.print_person(self)
         else:
             print("Incorrect input")
 

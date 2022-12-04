@@ -25,7 +25,6 @@ def first_start():
             )
             """)
         per.__init__(self)
-        per.load_person()
         per.start_prog(self)
         connection.commit()
     else:
