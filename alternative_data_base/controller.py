@@ -94,23 +94,32 @@ class Person:
                            "1. Print out whole data base\n"
                            "2. Input into database\n"
                            "3.Search for a desired information in database\n"
-                           "4. Find a person with id"))
+                           "4. Find a person with id\n"
+                           "5.To stop"))
         if choice == 1:
             connection = sqlite3.connect('workdb.db')
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM persons")
             result = cursor.fetchall()
             print(result)
-            connection.close()
+            Person.start_prog(self)
         elif choice == 2:
             a,b,c,d,e = Person.input_person(self)
             pl = Person()
             pl.insert_person(a,b,c,d,e)
+            self.connection.commit()
+            Person.start_prog(self)
         elif choice == 3:
             Person.search_data(self)
+            Person.start_prog(self)
         elif choice == 4:
             Person.print_person(self)
+            Person.start_prog(self)
+        elif choice == 5:
+            print("It was pleasure working with you ")
         else:
             print("Incorrect input")
+            Person.start_prog(self)
+
 
 
